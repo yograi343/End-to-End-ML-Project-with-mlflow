@@ -1,16 +1,16 @@
 import os
-from box.exception import BoxValueError
+from box.exceptions import BoxValueError
 import yaml
 from src.mlproject import logger
 import json
 import joblib
-from ensure import ensure_annotation
+from ensure import ensure_annotations
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
 
 
-@ensure_annotation
+@ensure_annotations
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
 
@@ -35,7 +35,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
         return e
 
 
-@ensure_annotation
+@ensure_annotations
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
@@ -49,7 +49,7 @@ def create_directories(path_to_directories: list, verbose=True):
             logger.info(f"created directory at: {path}")
 
 
-@ensure_annotation
+@ensure_annotations
 def save_json(path: Path, data: dict):
     """save json files data
 
@@ -62,7 +62,7 @@ def save_json(path: Path, data: dict):
     logger.info(f"json file saved at {path}")
 
 
-@ensure_annotation
+@ensure_annotations
 def load_json(path: Path) -> ConfigBox:
     """save json files data
 
@@ -77,7 +77,7 @@ def load_json(path: Path) -> ConfigBox:
     return ConfigBox(content)
 
 
-@ensure_annotation
+@ensure_annotations
 def save_bin(data: Any, path: Path):
     """Save binary file
 
@@ -89,7 +89,7 @@ def save_bin(data: Any, path: Path):
     logger.info(f"binary file saved at: {path}")
 
 
-@ensure_annotation
+@ensure_annotations
 def load_bin(path: Path) -> Any:
     """load binary file
 
@@ -104,7 +104,7 @@ def load_bin(path: Path) -> Any:
     return data
 
 
-@ensure_annotation
+@ensure_annotations
 def get_size(path: Path) -> str:
     """get size in KB
 
